@@ -1,0 +1,21 @@
+{{ define "main" }}
+<h1>Nos produits</h1>
+
+<div>
+  {{ $foodFactsEndpoint := "http://fr.openfoodfacts.org/api/v0/produit/" }}
+  {{ range $i, $product := getCSV "," "data/products.csv" | after 1 }}
+  <div>
+    <h2>{{ index $product 0 }}</h2>
+
+    {{ $barcode := index $product 1 }}
+    {{ $facts := getJSON $foodFactsEndpoint $barcode ".json" }}
+    <a href="https://fr.openfoodfacts.org/produit/{{ $barcode }}">Voir sur Openfoodfacts</a>
+
+    {{ $facts.product.ingredients_text_fr}}
+    <img src="{{ $facts.product.image_nutrition_url }}" alt="" />
+    <img src="{{ $facts.product.image_ingredients_url }}" alt="" />
+  </div>
+  {{ end }}
+</div>
+
+{{ end }}

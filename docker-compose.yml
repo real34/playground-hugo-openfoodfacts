@@ -1,0 +1,10 @@
+hugo:
+  build: ./
+  command: server -s src --navigateToChanged --bind 0.0.0.0
+  expose:
+    - 1313
+  volumes:
+    - ./:/app
+  environment:
+    VIRTUAL_HOST: lcc-facts.test
+    VIRTUAL_PORT: 1313

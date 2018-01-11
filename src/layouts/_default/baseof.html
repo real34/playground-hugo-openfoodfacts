@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="fr">
+<title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+<body>
+  aui!! {{ block "main" . }}
+  <!-- The part of the page that begins to differ between templates -->
+  {{ end }}
+</body>
+
+</html>
